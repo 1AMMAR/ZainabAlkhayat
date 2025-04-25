@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zainab Alkhayat | Architect • Artist • Voice Actress</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#9333ea', // Purple
+                            dark: '#7e22ce',
+                        },
+                        secondary: {
+                            DEFAULT: '#ec4899', // Pink
+                            dark: '#db2777',
+                        },
+                        dark: {
+                            DEFAULT: '#000000',
+                            lighter: '#0f0f0f',
+                            light: '#121212',
+                        },
+                        light: {
+                            DEFAULT: '#e5e7eb',
+                            dark: '#d1d5db',
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Cormorant Garamond', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-down': 'slideDown 0.8s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scale-in': 'scaleIn 1.5s ease-out forwards',
+                        'rotate-in': 'rotateIn 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '70%': { transform: 'scale(1.1)', opacity: '0.7' },
+                            '100%': { transform: 'scale(1)', opacity: '1' }
+                        },
+                        rotateIn: {
+                            '0%': { transform: 'rotate(-90deg) scale(0)', opacity: '0' },
+                            '100%': { transform: 'rotate(0) scale(1)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        /* Base styles */
+        body {
+            overflow-x: hidden;
+            background-color: #000000;
+            color: #e5e7eb;
+            opacity: 100%;
+            animation: bodyanimation 4.5s ease-in-out;
+        }
+
+       @keyframes bodyanimation{
+  0% {opacity: 0%;}
+   25% {opacity: 100%;}
+   50% {opacity: 0%;}
+   100% {opacity: 100%;}
+        }
+
+        /* Splash screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-logo {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 30px;
+        }
+
+        .splash-logo::before {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 70%;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #cccccc;
+            border-bottom-color: #999095;
+            animation: rotate 2s linear infinite;
+        }
+
+        .splash-logo::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #ffffff;
+            border-bottom-color: #ffffff;
+            animation: rotate 1.5s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transform: scale(0.5);
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            width: 0%;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b3b3b3;
+        }
+
+        /* Audio player styling */
+        .progress-bar-audio {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-audio {
+            height: 100%;
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            width: 0;
+            transition: width 0.1s linear;
+        }
+
+        /* Gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Tilt effect */
+        .tilt {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .tilt-inner {
+            transform: translateZ(20px);
+        }
+
+        /* Animated background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .animated-bg span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            animation: animate 25s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+
+        /* Nav link hover effect */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(to right, #9333ea, #ec4899);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo"></div>
+        <h1 class="text-4xl md:text-4xl font-heading font-bold mb-4 text-white ">ZAINAB ALKHAYAT</h1>
+        <div class="mt-12 opacity-0 animate-fade-in" style="animation-delay: 1.5s;">
+         
+            <div class="w-48 h-1 bg-gray-800 mt-2 overflow-hidden rounded-full">
+                <div id="loadingBar" class="h-full bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT rounded-full" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-black bg-opacity-90 backdrop-blur-sm shadow-lg" id="navbar">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-heading font-semibold">
+                <a href="#home" class="text-white hover:text-primary-DEFAULT transition-colors duration-300">ZAINAB ALKHAYAT</a>
+            </div>
+            <div class="menu-toggle cursor-pointer lg:hidden text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu hidden lg:flex space-x-8 text-sm uppercase tracking-wider font-medium">
+                <li><a href="#about" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">About</a></li>
+                <li><a href="#architecture" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">Architecture</a></li>
+                <li><a href="#art" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">Art</a></li>
+                <li><a href="#more-work" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">More Work</a></li>
+                <li><a href="#voice" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">Voice</a></li>
+                <li><a href="#contact" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 relative nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-full h-screen bg-black z-40 transform translate-x-full transition-transform duration-300 lg:hidden">
+        <div class="flex justify-end p-6">
+            <button class="mobile-close text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="flex flex-col items-center space-y-6 mt-12 text-lg uppercase tracking-wider font-medium">
+            <li><a href="#about" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">About</a></li>
+            <li><a href="#architecture" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">Architecture</a></li>
+            <li><a href="#art" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">Art</a></li>
+            <li><a href="#more-work" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">More Work</a></li>
+            <li><a href="#voice" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">Voice</a></li>
+            <li><a href="#contact" class="text-white hover:text-primary-DEFAULT transition-colors duration-300 mobile-link">Contact</a></li>
+        </ul>
+        <div class="absolute bottom-10 w-full flex justify-center">
+            <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-primary-DEFAULT transition-all duration-300">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-primary-DEFAULT transition-all duration-300">
+                    <i class="fab fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black opacity-90 z-10"></div>
+        <div class="parallax absolute inset-0 bg-cover bg-top" style="background-image: url('main.jpg');">
+    </div>
+        <div class="container mx-auto px-4 relative z-20 text-center">
+            <h1 class="text-5xl md:text-7xl font-heading font-bold mb-4 text-white opacity-100 animate-slide-down" data-aos="fade-down">ZAINAB ALKHAYAT</h1>
+            <p class="text-xl md:text-2xl text-light-DEFAULT mb-8 opacity-100 animate-slide-up" data-aos="fade-up" data-aos-delay="200">Architect • Artist • Voice Actress</p>
+            <a href="#about" class="inline-block text-3xl text-white animate-bounce-slow">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-black relative overflow-hidden">
+        <div class="animated-bg">
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+        </div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                About Me
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 animate-on-scroll" data-animation="slide-right">
+                    <p class="text-light-DEFAULT mb-6">I am a second-year architecture student, deeply passionate about designing spaces that inspire and serve humanity. Every structure I envision is driven by a commitment to functionality, aesthetics, and human-centered design, as I believe architecture has the power to shape experiences and improve lives.</p>
+                    
+                    <p class="text-light-DEFAULT mb-6">Beyond design, I am also a dedicated researcher, constantly seeking knowledge to innovate and solve real-world challenges. My curiosity pushes me to explore new ideas, materials, and sustainable solutions that bridge creativity with practicality.</p>
+                    
+                    <p class="text-light-DEFAULT mb-6">Art has always been a vital part of my expression—I am a painter, using colors and textures to capture emotions and tell stories. Whether on canvas or in sketches, my work reflects my architectural mindset, blending form and meaning.</p>
+                    
+                    <p class="text-light-DEFAULT mb-6">As a voiceover artist, I bring words to life, whether in narrations, presentations, or creative projects. My voice is another tool I use to communicate ideas, evoke emotions, and connect with audiences in a meaningful way.</p>
+                    
+                    <p class="text-light-DEFAULT mb-6">Lastly, I am a committed volunteer, believing that true impact comes from serving others. Whether through community projects, advocacy, or sharing my skills, I strive to make a difference—one small act at a time.</p>
+                    
+                    <p class="text-light-DEFAULT">My goal is simple: to leave a positive mark through architecture, research, art, voice, and service, creating a legacy that goes beyond myself.</p>
+                </div>
+                <div class="lg:w-1/2 animate-on-scroll" data-animation="slide-left">
+                    <div class="relative rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-[1.02] tilt">
+                        <img src="z (4).jpg" alt="Zainab Alkhayat with architectural model" class="w-full h-auto tilt-inner">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="py-24 bg-BLACK-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                Architecture
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <div class="space-y-24">
+                <!-- Project 1 -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 animate-on-scroll" data-animation="fade-in">
+                    <div class="lg:w-1/2 order-2 lg:order-1">
+                        <h3 class="text-2xl md:text-3xl font-heading font-semibold mb-4 text-white">Architect's House & Studio</h3>
+                        <p class="text-light-DEFAULT mb-6">This house and studio for an architect utilizes interlocking geometric forms to create dynamic spaces and maximize natural light. A neutral palette of blue, gray, and wood is accented with pops of color to stimulate creativity. The material palette includes exposed concrete for strength and a raw aesthetic, large expanses of glass for transparency, and warm wood accents for comfort.</p>
+                        <div class="flex space-x-4">
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Residential</span>
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Workspace</span>
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Modern</span>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 order-1 lg:order-2">
+                        <div class="relative rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-50 hover:scale-[3.02] tilt">
+                            <img src="1 (3).jpg" alt="Architectural Model" class="w-full h-auto tilt-inner">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="flex flex-col lg:flex-row items-center gap-12 animate-on-scroll" data-animation="fade-in">
+                    <div class="lg:w-1/2">
+                        <div class="relative rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-[1.02] tilt">
+                            <img src="1 (1).jpg" alt="Cancer Care Center Design" class="w-full h-auto tilt-inner">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <h3 class="text-2xl md:text-3xl font-heading font-semibold mb-4 text-white">Cancer Care Center</h3>
+                        <p class="text-light-DEFAULT mb-6">This sketch presents the exterior of my cancer care center design – a serene, structured composition where clean geometries frame a deliberate connection to nature. The building's rectilinear forms create sheltered outdoor spaces and carefully composed views, allowing patients to engage with natural elements through architecture that feels protective yet open. Strategic openings and material transitions subtly guide movement while maintaining a sense of calm dignity.</p>
+                        <div class="flex space-x-4">
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Healthcare</span>
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Healing</span>
+                            <span class="px-3 py-1 bg-black rounded-full text-sm text-white">Biophilic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Section -->
+    <section id="art" class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                Art
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <div class="flex flex-col lg:flex-row items-center gap-12 animate-on-scroll" data-animation="fade-in">
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <h3 class="text-2xl md:text-3xl font-heading font-semibold mb-4 text-white">Sufi Soul in Contemplation</h3>
+                    <p class="text-light-DEFAULT mb-2"><span class="text-primary-DEFAULT font-medium">Medium:</span> Acrylic on canvas</p>
+                    <p class="text-light-DEFAULT mb-6"><span class="text-primary-DEFAULT font-medium">Dimensions:</span> 20×20 cm</p>
+                    <p class="text-light-DEFAULT mb-6">This painting depicts a Sufi figure suspended in a moment of profound existential questioning, embodying the tension between divine mystery and human yearning. The brushwork merges fluidity with tension, mirroring the themes of duality in the accompanying poetic text: "Are you light or fire? / Gentle or compelled? / Your 99 names at war— / Does victory belong to Hell, Paradise, / Or to oblivion?"</p>
+                    <div class="flex space-x-4">
+                        <span class="px-3 py-1 bg-gray-900 rounded-full text-sm text-white">Spiritual</span>
+                        <span class="px-3 py-1 bg-gray-900 rounded-full text-sm text-white">Acrylic</span>
+                        <span class="px-3 py-1 bg-gray-900 rounded-full text-sm text-white">Expressionism</span>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <div class="relative rounded-lg overflow-hidden shadow-2xl transform transition-transform duration-500 hover:scale-[1.02] tilt">
+                        <img src="1 (2).jpg" alt="Sufi Soul in Contemplation" class="w-full h-auto tilt-inner">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More of My Work Section -->
+    <section id="more-work" class="py-24 bg-black-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                More of My Work
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <div class="gallery-container animate-on-scroll" data-animation="fade-in">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.27_eefa794c.jpg-bi43rEKHcOM5BLjTXjFqUydVZv1R5s.jpeg" alt="Sketch artwork" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Figure Study</h3>
+                        <p class="text-sm text-light-DEFAULT">Pencil sketch exploring human form and posture</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.26_e45b29f4.jpg-vcaS3lxmao79WapAGbjEPGvg2mNdgQ.jpeg" alt="Abstract blue artwork" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Urban Rhythm</h3>
+                        <p class="text-sm text-light-DEFAULT">Mixed media exploration of urban architecture</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.27_48260eb3.jpg-3BGPKA4C026emDeF71z6NBo5sMolzm.jpeg" alt="Minimalist interior design" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Whisper Space</h3>
+                        <p class="text-sm text-light-DEFAULT">Digital illustration of minimalist interior design</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.26_63ff6b86.jpg-c3v7gUtsfeGNZTSeMKKRRDvCZaehIk.jpeg" alt="Business card design" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Exhibition Identity</h3>
+                        <p class="text-sm text-light-DEFAULT">Branding design for Modern Syrian Exhibition</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.27_928323c8.jpg-bpexy1XRJ2w2OCFGG0VfOWGqYKj1Jk.jpeg" alt="Abstract cityscape painting" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Urban Ascension</h3>
+                        <p class="text-sm text-light-DEFAULT">Mixed media painting exploring urban resilience</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item aspect-square">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-04-26%20at%2000.52.28_6df56f6a.jpg-44B2MxNsPSynqUsvDJy0yYqyJwCaOO.jpeg" alt="Abstract portrait" class="w-full h-full object-cover">
+                    <div class="gallery-overlay">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Veiled Identity</h3>
+                        <p class="text-sm text-light-DEFAULT">Abstract portrait exploring human identity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voice Section -->
+    <section id="voice" class="py-24 bg-black relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-8 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                Voice Acting
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <p class="text-center text-light-DEFAULT max-w-3xl mx-auto mb-16 animate-on-scroll" data-animation="fade-in">As a voice actress, I bring scripts to life with emotion and clarity. Below are samples of my voice work.</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Audio Player 1 -->
+                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate-on-scroll" data-animation="slide-right">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Demo 1</h3>
+                        <p class="text-light-DEFAULT text-sm mb-6">Prologue.</p>
+                        <div class="player-controls">
+                            <div class="player-progress mb-4">
+                                <div class="progress-bar-audio">
+                                    <div class="progress-audio" id="progress-1"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-light-DEFAULT mt-2">
+                                    <span class="current-time" id="current-time-1">0:00</span>
+                                    <span class="duration" id="duration-1">0:00</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <button class="play-btn w-12 h-12 rounded-full bg-primary-DEFAULT text-white flex items-center justify-center hover:bg-primary-dark transition-colors duration-300" id="play-btn-1">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-volume-up text-light-DEFAULT"></i>
+                                    <input type="range" class="volume-slider w-20 accent-primary-DEFAULT" id="volume-1" min="0" max="1" step="0.1" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <audio id="audio-1" src="zainabAudio.wav"></audio>
+                    </div>
+                    
+                    <!-- Audio Player 2 -->
+                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 animate-on-scroll" data-animation="slide-left">
+                        <h3 class="text-xl font-heading font-semibold text-white mb-2">Demo 2</h3>
+                        <p class="text-light-DEFAULT text-sm mb-6">Commercial In Arabic.</p>
+                        <div class="player-controls">
+                            <div class="player-progress mb-4">
+                                <div class="progress-bar-audio">
+                                    <div class="progress-audio" id="progress-2"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-light-DEFAULT mt-2">
+                                    <span class="current-time" id="current-time-2">0:00</span>
+                                    <span class="duration" id="duration-2">0:00</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <button class="play-btn w-12 h-12 rounded-full bg-primary-DEFAULT text-white flex items-center justify-center hover:bg-primary-dark transition-colors duration-300" id="play-btn-2">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="flex items-center space-x-2">
+                                    <i class="fas fa-volume-up text-light-DEFAULT"></i>
+                                    <input type="range" class="volume-slider w-20 accent-primary-DEFAULT" id="volume-2" min="0" max="1" step="0.1" value="1">
+                                </div>
+                            </div>
+                        </div>
+                        <audio id="audio-2" src="zainab2.wav"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-black-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent"></div>
+        <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent"></div>
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-heading font-semibold mb-16 text-center text-white relative animate-on-scroll" data-animation="fade-in">
+                Contact
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT"></span>
+            </h2>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2 animate-on-scroll" data-animation="slide-right">
+                    <p class="text-light-DEFAULT mb-8">Interested in collaborating or have questions about my work? Feel free to reach out.</p>
+                    <div class="space-y-6 mb-10">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-primary-DEFAULT">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-medium">Email</h3>
+                                <p class="text-light-DEFAULT">zainabalkhayat17@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-primary-DEFAULT">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-medium">Phone</h3>
+                                <p class="text-light-DEFAULT">+963994838211</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-primary-DEFAULT">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-medium">Location</h3>
+                                <p class="text-light-DEFAULT">Damascus, Syria</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/zainabsworld__?igsh=b3IxaTA2dzh6cXU3" class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-primary-DEFAULT transition-all duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/nona.alhaffar.9" class="w-12 h-12 rounded-full bg-black flex items-center justify-center text-white hover:bg-primary-DEFAULT transition-all duration-300">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 animate-on-scroll" data-animation="slide-left">
+                    <form id="contactForm" action="https://formspree.io/f/xdkgkewa"  method="POST" class="bg-black rounded-xl p-8 shadow-lg">
+                        <div class="mb-6">
+                            <label for="name" class="block text-white mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg--900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT text-black">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-white mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-black-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT text-black">
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-white mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 bg-black-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT text-black">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-white mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 bg-black-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT text-black resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-primary-DEFAULT to-secondary-DEFAULT text-white font-medium rounded-lg transition-transform duration-300 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-primary-DEFAULT">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-light-DEFAULT">&copy; 2025 Zainab Alkhayat. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Splash Screen with failsafe
+    const splashScreen = document.getElementById('splashScreen');
+    const loadingBar = document.getElementById('loadingBar');
+    
+    // Ensure the splash screen will hide even if there's an issue with the loading animation
+    const FAILSAFE_TIMEOUT = 5000; // 5 seconds max for splash screen
+    
+    // Function to hide splash screen and initialize the site
+    function hideSplashAndInit() {
+        splashScreen.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Enable scrolling
+        
+        // Start animations after splash screen
+        setTimeout(() => {
+            initAnimations();
+        }, 500);
+        
+        // Make sure the splash screen is fully hidden
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+        }, 1000);
+    }
+    
+    // Set a failsafe timeout to ensure the splash screen always hides
+    const failsafeTimer = setTimeout(() => {
+        console.log("Failsafe triggered: forcing splash screen to hide");
+        hideSplashAndInit();
+    }, FAILSAFE_TIMEOUT);
+    
+    // Simulate loading progress
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+        progress += 10; // Increase by a fixed amount for reliability
+        
+        if (progress >= 100) {
+            progress = 100;
+            loadingBar.style.width = '100%';
+            clearInterval(loadingInterval);
+            clearTimeout(failsafeTimer); // Clear the failsafe if loading completes normally
+            
+            setTimeout(() => {
+                hideSplashAndInit();
+            }, 1000);
+        } else {
+            loadingBar.style.width = `${progress}%`;
+        }
+    }, 150);
+    
+    // Disable scrolling during splash screen
+    document.body.style.overflow = 'hidden';
+    
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileClose = document.querySelector('.mobile-close');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    
+    if (menuToggle && mobileMenu && mobileClose) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('translate-x-full');
+            mobileMenu.classList.toggle('translate-x-0');
+            document.body.classList.toggle('overflow-hidden');
+        });
+        
+        mobileClose.addEventListener('click', function() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            document.body.classList.remove('overflow-hidden');
+        });
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-0');
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+    }
+    
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('py-2');
+            navbar.classList.add('shadow-lg');
+        } else {
+            navbar.classList.remove('py-2');
+            navbar.classList.remove('shadow-lg');
+        }
+        
+        // Update progress bar
+        updateProgressBar();
+    });
+    
+    // Progress bar
+    function updateProgressBar() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById("progressBar");
+        if (progressBar) {
+            progressBar.style.width = scrolled + "%";
+        }
+    }
+    
+    // Audio Players
+    const setupAudioPlayer = (index) => {
+        const audio = document.getElementById(`audio-${index}`);
+        const playBtn = document.getElementById(`play-btn-${index}`);
+        
+        if (!audio || !playBtn) return;
+        
+        const playIcon = playBtn.querySelector('i');
+        const progressBar = document.getElementById(`progress-${index}`);
+        const currentTimeEl = document.getElementById(`current-time-${index}`);
+        const durationEl = document.getElementById(`duration-${index}`);
+        const volumeSlider = document.getElementById(`volume-${index}`);
+        
+        // Format time in minutes and seconds
+        const formatTime = (seconds) => {
+            if (isNaN(seconds)) return "0:00";
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return `${min}:${sec < 10 ? '0' + sec : sec}`;
+        };
+        
+        // Update progress bar
+        const updateProgress = () => {
+            if (!progressBar) return;
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${percent}%`;
+            if (currentTimeEl) {
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            }
+        };
+        
+        // Set audio duration when metadata is loaded
+        audio.addEventListener('loadedmetadata', () => {
+            if (durationEl) {
+                durationEl.textContent = formatTime(audio.duration);
+            }
+        });
+        
+        // Update progress while playing
+        audio.addEventListener('timeupdate', updateProgress);
+        
+        // Play/Pause toggle
+        playBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                // Pause all other audio elements first
+                document.querySelectorAll('audio').forEach(a => {
+                    if (a !== audio && !a.paused) {
+                        a.pause();
+                        const otherIndex = a.id.split('-')[1];
+                        const otherPlayIcon = document.querySelector(`#play-btn-${otherIndex} i`);
+                        if (otherPlayIcon) {
+                            otherPlayIcon.className = 'fas fa-play';
+                        }
+                    }
+                });
+                
+                audio.play().catch(e => {
+                    console.log("Audio play failed:", e);
+                    // Handle the error - maybe the audio file doesn't exist
+                    alert("Audio playback failed. The audio file may not be available.");
+                });
+                if (playIcon) {
+                    playIcon.className = 'fas fa-pause';
+                }
+            } else {
+                audio.pause();
+                if (playIcon) {
+                    playIcon.className = 'fas fa-play';
+                }
+            }
+        });
+        
+        // Reset player when audio ends
+        audio.addEventListener('ended', () => {
+            audio.currentTime = 0;
+            if (playIcon) {
+                playIcon.className = 'fas fa-play';
+            }
+        });
+        
+        // Click on progress bar to seek
+        if (progressBar) {
+            const progressContainer = progressBar.parentElement;
+            if (progressContainer) {
+                progressContainer.addEventListener('click', (e) => {
+                    const rect = progressContainer.getBoundingClientRect();
+                    const clickX = e.clientX - rect.left;
+                    const width = progressContainer.clientWidth;
+                    const duration = audio.duration;
+                    
+                    audio.currentTime = (clickX / width) * duration;
+                });
+            }
+        }
+        
+        // Volume control
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', () => {
+                audio.volume = volumeSlider.value;
+            });
+        }
+    };
+    
+    // Setup both audio players
+    try {
+        setupAudioPlayer(1);
+        setupAudioPlayer(2);
+    } catch (e) {
+        console.error("Error setting up audio players:", e);
+    }
+    
+    
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Calculate position to scroll to (with navbar offset)
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+    
+    // Scroll animations
+    function initAnimations() {
+        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const animateElement = (element) => {
+            const animation = element.dataset.animation;
+            if (animation) {
+                element.classList.add(`animate-${animation}`);
+                element.style.opacity = '1';
+            }
+        };
+        
+        const checkIfInView = () => {
+            animateOnScrollElements.forEach(element => {
+                if (element.classList.contains('animated')) return;
+                
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const isVisible = (elementTop < window.innerHeight - 100) && (elementBottom > 0);
+                
+                if (isVisible) {
+                    animateElement(element);
+                    element.classList.add('animated');
+                }
+            });
+        };
+        
+        // Set initial styles
+        animateOnScrollElements.forEach(element => {
+            element.style.opacity = '0';
+        });
+        
+        // Check elements on load
+        checkIfInView();
+        
+        // Check elements on scroll
+        window.addEventListener('scroll', checkIfInView);
+    }
+    
+    // Parallax effect
+    const parallaxElements = document.querySelectorAll('.parallax');
+    
+    window.addEventListener('scroll', () => {
+        parallaxElements.forEach(element => {
+            const scrollPosition = window.pageYOffset;
+            element.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+        });
+    });
+    
+    // Tilt effect for images
+    const tiltElements = document.querySelectorAll('.tilt');
+    
+    tiltElements.forEach(element => {
+        element.addEventListener('mousemove', (e) => {
+            const rect = element.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+            
+            element.style.transform = `perspective(1000px) rotateX(${deltaY * -5}deg) rotateY(${deltaX * 5}deg)`;
+        });
+        
+        element.addEventListener('mouseleave', () => {
+            element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        });
+    });
+    
+    // Create animated background elements
+    const animatedBgs = document.querySelectorAll('.animated-bg');
+    
+    animatedBgs.forEach(bg => {
+        for (let i = 0; i < 15; i++) {
+            const span = document.createElement('span');
+            span.style.setProperty('--i', Math.floor(Math.random() * 30) + 10);
+            span.style.width = `${Math.random() * 30 + 10}px`;
+            span.style.height = span.style.width;
+            span.style.left = `${Math.random() * 100}%`;
+            span.style.animationDelay = `${Math.random() * 5}s`;
+            bg.appendChild(span);
+        }
+    });
+});
+</script>
