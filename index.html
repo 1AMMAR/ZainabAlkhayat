@@ -335,7 +335,7 @@
     </style>
 </head>
 <body>
-    <audio id="bgMusic" autoplay loop>
+    <audio id="bgMusic" autoplay loop muted>
         <source src="background-music.mp3" type="audio/mpeg">
       </audio>
     <!-- Progress Bar -->
@@ -1153,37 +1153,79 @@ document.addEventListener('DOMContentLoaded', function() {
       }, fadeInterval);
   }
   
-  // Initialize background music
+  // Initialize background music with better autoplay handling
   function initBackgroundMusic() {
       const bgMusic = document.getElementById('bgMusic');
       if (bgMusic) {
-          // Check if the file exists by trying to load it
-          bgMusic.addEventListener('error', function() {
-              console.error("Background music file could not be loaded. Please check the file path.");
-          });
+          // Set initial volume to 0 to prevent audible "pop" if it does play
+          bgMusic.volume = 0;
           
-          // Set initial volume
-          bgMusic.volume = 0.5;
+          // Try multiple approaches to get autoplay working
           
-          // Try to play (may be blocked by browser autoplay policies)
-          bgMusic.play().catch(e => {
-              console.log("Autoplay prevented:", e);
-              // Create a play button for background music
-              const playBgMusicBtn = document.createElement('button');
-              playBgMusicBtn.innerHTML = '<i class="fas fa-music"></i> Play Music';
-              playBgMusicBtn.className = 'fixed bottom-4 right-4 z-50 bg-primary-DEFAULT text-white px-4 py-2 rounded-full shadow-lg';
-              playBgMusicBtn.addEventListener('click', () => {
-                  bgMusic.play();
-                  playBgMusicBtn.remove();
+          // 1. Set audio to muted initially (browsers are more likely to allow muted autoplay)
+          bgMusic.muted = true;
+          
+          // 2. Try to play with various options
+          const playPromise = bgMusic.play();
+          
+          if (playPromise !== undefined) {
+              playPromise.then(() => {
+                  // Autoplay started successfully
+                  console.log("Background music autoplay successful");
+                  
+                  // After a short delay, unmute and fade in the volume
+                  setTimeout(() => {
+                      bgMusic.muted = false;
+                      fadeBackgroundMusic(0, 0.5); // Fade from 0 to 0.5 volume
+                  }, 1000);
+              }).catch(error => {
+                  console.log("Autoplay prevented:", error);
+                  
+                  // 3. Try alternative approach - use user interaction with the page
+                  const handleUserInteraction = () => {
+                      bgMusic.muted = false;
+                      bgMusic.play().then(() => {
+                          fadeBackgroundMusic(0, 0.5);
+                          // Remove event listeners once played
+                          document.removeEventListener('click', handleUserInteraction);
+                          document.removeEventListener('touchstart', handleUserInteraction);
+                          document.removeEventListener('keydown', handleUserInteraction);
+                          document.removeEventListener('scroll', handleUserInteraction);
+                      }).catch(e => {
+                          console.log("Still couldn't play audio after user interaction:", e);
+                          // As a last resort, show the play button
+                          showPlayButton();
+                      });
+                  };
+                  
+                  // Add event listeners for common user interactions
+                  document.addEventListener('click', handleUserInteraction);
+                  document.addEventListener('touchstart', handleUserInteraction);
+                  document.addEventListener('keydown', handleUserInteraction);
+                  document.addEventListener('scroll', handleUserInteraction);
               });
-              document.body.appendChild(playBgMusicBtn);
-          });
+          }
       }
+  }
+  
+  function showPlayButton() {
+      // Create a play button for background music as a last resort
+      const playBgMusicBtn = document.createElement('button');
+      playBgMusicBtn.innerHTML = '<i class="fas fa-music"></i> Play Music';
+      playBgMusicBtn.className = 'fixed bottom-4 right-4 z-50 bg-primary-DEFAULT text-white px-4 py-2 rounded-full shadow-lg';
+      playBgMusicBtn.addEventListener('click', () => {
+          const bgMusic = document.getElementById('bgMusic');
+          bgMusic.muted = false;
+          bgMusic.play();
+          fadeBackgroundMusic(0, 0.5);
+          playBgMusicBtn.remove();
+      });
+      document.body.appendChild(playBgMusicBtn);
   }
   
   // Call the init function after splash screen
   setTimeout(() => {
       initBackgroundMusic();
-  }, 5000); // Wait for splash screen to finish
+  }, 1000); // Wait for splash screen to finish
 });
 </script>
