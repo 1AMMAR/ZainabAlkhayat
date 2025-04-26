@@ -335,6 +335,9 @@
     </style>
 </head>
 <body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="background-music.mp3" type="audio/mpeg">
+      </audio>
     <!-- Progress Bar -->
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
@@ -763,7 +766,7 @@
 
 
 <script>
-
+   document.getElementById("bgMusic").volume = 0.5; // 20% volume
 document.addEventListener('DOMContentLoaded', function() {
     // Splash Screen with failsafe
     const splashScreen = document.getElementById('splashScreen');
@@ -915,9 +918,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Play/Pause toggle
         playBtn.addEventListener('click', () => {
             if (audio.paused) {
+                // Fade out background music
+                fadeBackgroundMusic(0.1, 0);
+                
                 // Pause all other audio elements first
                 document.querySelectorAll('audio').forEach(a => {
-                    if (a !== audio && !a.paused) {
+                    if (a !== audio && !a.paused && a.id !== 'bgMusic') {
                         a.pause();
                         const otherIndex = a.id.split('-')[1];
                         const otherPlayIcon = document.querySelector(`#play-btn-${otherIndex} i`);
@@ -940,6 +946,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (playIcon) {
                     playIcon.className = 'fas fa-play';
                 }
+                // Fade in background music when voice sample is paused
+                fadeBackgroundMusic(0, 0.5);
             }
         });
         
@@ -1093,5 +1101,89 @@ document.addEventListener('DOMContentLoaded', function() {
             bg.appendChild(span);
         }
     });
+
+  // Background music fade functions
+  function fadeBackgroundMusic(startVolume, targetVolume) {
+      const bgMusic = document.getElementById('bgMusic');
+      
+      // Check if background music exists and is loaded
+      if (!bgMusic || bgMusic.readyState < 2) {
+          console.log("Background music not available or not loaded yet");
+          return;
+      }
+      
+      // Set initial volume
+      bgMusic.volume = startVolume;
+      
+      // If target is 0 and current is 0, no need to fade
+      if (startVolume === 0 && targetVolume === 0) return;
+      
+      // If target is > 0, make sure the music is playing
+      if (targetVolume > 0 && bgMusic.paused) {
+          bgMusic.play().catch(e => {
+              console.log("Could not play background music:", e);
+          });
+      }
+      
+      // Perform the fade
+      const fadeInterval = 50; // ms between volume changes
+      const fadeStep = 0.05; // volume change per step
+      
+      const fadeEffect = setInterval(() => {
+          // Determine direction
+          if (startVolume < targetVolume) {
+              // Fade in
+              if (bgMusic.volume < targetVolume) {
+                  bgMusic.volume = Math.min(bgMusic.volume + fadeStep, targetVolume);
+              } else {
+                  clearInterval(fadeEffect);
+              }
+          } else {
+              // Fade out
+              if (bgMusic.volume > targetVolume) {
+                  bgMusic.volume = Math.max(bgMusic.volume - fadeStep, targetVolume);
+              } else {
+                  clearInterval(fadeEffect);
+                  // If we've faded all the way out, pause the music
+                  if (targetVolume === 0) {
+                      bgMusic.pause();
+                  }
+              }
+          }
+      }, fadeInterval);
+  }
+  
+  // Initialize background music
+  function initBackgroundMusic() {
+      const bgMusic = document.getElementById('bgMusic');
+      if (bgMusic) {
+          // Check if the file exists by trying to load it
+          bgMusic.addEventListener('error', function() {
+              console.error("Background music file could not be loaded. Please check the file path.");
+          });
+          
+          // Set initial volume
+          bgMusic.volume = 0.5;
+          
+          // Try to play (may be blocked by browser autoplay policies)
+          bgMusic.play().catch(e => {
+              console.log("Autoplay prevented:", e);
+              // Create a play button for background music
+              const playBgMusicBtn = document.createElement('button');
+              playBgMusicBtn.innerHTML = '<i class="fas fa-music"></i> Play Music';
+              playBgMusicBtn.className = 'fixed bottom-4 right-4 z-50 bg-primary-DEFAULT text-white px-4 py-2 rounded-full shadow-lg';
+              playBgMusicBtn.addEventListener('click', () => {
+                  bgMusic.play();
+                  playBgMusicBtn.remove();
+              });
+              document.body.appendChild(playBgMusicBtn);
+          });
+      }
+  }
+  
+  // Call the init function after splash screen
+  setTimeout(() => {
+      initBackgroundMusic();
+  }, 5000); // Wait for splash screen to finish
 });
 </script>
